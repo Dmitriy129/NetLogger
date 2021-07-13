@@ -17,7 +17,7 @@ export interface PingResponseSuccessData {
         min: number
         avg: number
         max: number
-        stddev: number
+        mdev: number
     }
 }
 export interface PingResponseSuccess {

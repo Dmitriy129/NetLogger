@@ -3,7 +3,7 @@ import { PingResponseSuccessData } from "src/interfaces/NetMonitor";
 
 class Api {
     parsePingResponce(sResponse: string): PingResponseSuccessData {
-        const regex = /([0-9]+) packets transmitted, ([0-9]+) packets received, ([0-9]{1,3}\.[0-9]+)% packet loss\nround-trip min\/avg\/max\/stddev = (([0-9]{1,3}\.[0-9]+)\/([0-9]{1,3}\.[0-9]+)\/([0-9]{1,3}\.[0-9]+)\/([0-9]{1,3}\.[0-9]+))/gm
+        const regex = /([0-9]+) packets transmitted, ([0-9]+) received, ([0-9]{1,3}|[0-9]{1,3}\.[0-9]+)% packet loss, time [0-9]+ms\nrtt min\/avg\/max\/mdev = (([0-9]{1,3}\.[0-9]+)\/([0-9]{1,3}\.[0-9]+)\/([0-9]{1,3}\.[0-9]+)\/([0-9]{1,3}\.[0-9]+)) ms/gm
         const values = regex.exec(sResponse) as string[]
         const parsedResponse: PingResponseSuccessData = {
             transmitted: parseFloat(values[1]),
@@ -13,7 +13,7 @@ class Api {
                 min: parseFloat(values[5]),
                 avg: parseFloat(values[6]),
                 max: parseFloat(values[7]),
-                stddev: parseFloat(values[8]),
+                mdev: parseFloat(values[8]),
             }
         }
         return parsedResponse

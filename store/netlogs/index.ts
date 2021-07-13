@@ -26,7 +26,7 @@ interface ParserOptions {
   transmitted?: boolean,
   received?: boolean,
   loss?: boolean,
-  stddev?: boolean,
+  mdev?: boolean,
   min?: boolean,
   avg?: boolean,
   max?: boolean,
@@ -36,7 +36,7 @@ const parseRecords = (records: StateRecord[], options: ParserOptions = {
   transmitted: true,
   received: true,
   loss: true,
-  stddev: true,
+  mdev: true,
   min: true,
   avg: true,
   max: true,
@@ -48,7 +48,7 @@ const parseRecords = (records: StateRecord[], options: ParserOptions = {
   if (options.transmitted) dataCollection.datasets[0] = ({ label: "transmitted", data: [], borderColor: "#aa00ff", backgroundColor: "#aa00ff" })
   if (options.received) dataCollection.datasets[1] = ({ label: "received", data: [], borderColor: "#536dfe", backgroundColor: "#536dfe" })
   if (options.loss) dataCollection.datasets[2] = ({ label: "loss", data: [], borderColor: "red", backgroundColor: "red" })
-  if (options.stddev) dataCollection.datasets[3] = ({ label: "stddev", data: [], borderColor: "#00c853", backgroundColor: "#00c853" })
+  if (options.mdev) dataCollection.datasets[3] = ({ label: "mdev", data: [], borderColor: "#00c853", backgroundColor: "#00c853" })
   if (options.min) dataCollection.datasets[4] = ({ label: "min", data: [], borderColor: "#536dfe", backgroundColor: "#536dfe" })
   if (options.avg) dataCollection.datasets[5] = ({ label: "avg", data: [], borderColor: "#c6ff00", backgroundColor: "#c6ff00" })
   if (options.max) dataCollection.datasets[6] = ({ label: "max", data: [], borderColor: "#ff9100", backgroundColor: "#ff9100" })
@@ -61,7 +61,7 @@ const parseRecords = (records: StateRecord[], options: ParserOptions = {
       min: 0,
       avg: 0,
       max: 0,
-      stddev: 0,
+      mdev: 0,
     }
     if (record.data.success === true) {
 
@@ -71,7 +71,7 @@ const parseRecords = (records: StateRecord[], options: ParserOptions = {
       data.min = record.data.data.roundTrip.min
       data.avg = record.data.data.roundTrip.avg
       data.max = record.data.data.roundTrip.max
-      data.stddev = record.data.data.roundTrip.stddev
+      data.mdev = record.data.data.roundTrip.mdev
     }
     {
       const dateArr = record.createdAt.split(" ")
@@ -91,7 +91,7 @@ const parseRecords = (records: StateRecord[], options: ParserOptions = {
     if (options.transmitted) dataCollection.datasets[0]?.data.push(data.transmitted)
     if (options.received) dataCollection.datasets[1]?.data.push(data.received)
     if (options.loss) dataCollection.datasets[2]?.data.push(data.loss)
-    if (options.stddev) dataCollection.datasets[3]?.data.push(data.stddev)
+    if (options.mdev) dataCollection.datasets[3]?.data.push(data.mdev)
     if (options.min) dataCollection.datasets[4]?.data.push(data.min)
     if (options.avg) dataCollection.datasets[5]?.data.push(data.avg)
     if (options.max) dataCollection.datasets[6]?.data.push(data.max)
