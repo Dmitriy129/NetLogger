@@ -49,8 +49,8 @@ const parseRecords = (records: StateRecord[], options: ParserOptions = {
   if (options.received) dataCollection.datasets[1] = ({ label: "received", data: [], borderColor: "#536dfe", backgroundColor: "#536dfe" })
   if (options.loss) dataCollection.datasets[2] = ({ label: "loss", data: [], borderColor: "red", backgroundColor: "red" })
   if (options.stddev) dataCollection.datasets[3] = ({ label: "stddev", data: [], borderColor: "#00c853", backgroundColor: "#00c853" })
-  if (options.min) dataCollection.datasets[4] = ({ label: "min", data: [], borderColor: "#536dfe", backgroundColor: "#536dfe" })
-  if (options.avg) dataCollection.datasets[5] = ({ label: "avg", data: [], borderColor: "#c6ff00", backgroundColor: "#c6ff00" })
+  if (options.min) dataCollection.datasets[4] = ({ label: "min", data: [], borderColor: "#c6ff00", backgroundColor: "#c6ff00" })
+  if (options.avg) dataCollection.datasets[5] = ({ label: "avg", data: [], borderColor: "#536dfe", backgroundColor: "#536dfe" })
   if (options.max) dataCollection.datasets[6] = ({ label: "max", data: [], borderColor: "#ff9100", backgroundColor: "#ff9100" })
 
   for (const [index, record] of records.entries()) {
@@ -154,7 +154,7 @@ export const getters: NetLogGetters = {
         Array.from(
           monitor.recordsList.values()
           || [])
-          .slice(-20), { min: true })
+          .slice(-20), { avg: true })
       return {
         id: monitor.id,
         title: monitor.title,
