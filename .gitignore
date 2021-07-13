@@ -89,5 +89,5 @@ sw.*
 *.swp
 
 
-serverStore.js
+serverStore.json
 .env.local

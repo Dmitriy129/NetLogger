@@ -5,7 +5,7 @@
     <v-row>
       <v-col>
         <v-row justify="space-between">
-          <v-col cols="4">
+          <v-col cols="12" sm="6" lg="4">
             <v-select
               :items="monitors"
               :value="viewConfig.monitorId"
@@ -18,7 +18,7 @@
               @change="setMonitorId"
             />
           </v-col>
-          <v-col cols="4">
+          <v-col cols="12" sm="6" lg="4">
             <v-btn
               :loading="loading"
               :disabled="loading"
@@ -35,7 +35,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="4">
+          <v-col cols="12" sm="6" lg="4">
             <v-btn
               v-if="monitorInfo.launched"
               :loading="loading"
@@ -89,7 +89,8 @@
         <v-row no-gutters>
           <v-col
             v-if="view.graph1"
-            :cols="view.graph1 && view.graph2 ? 6 : 12"
+            cols="12"
+            :sm="view.graph1 && view.graph2 ? 6 : 12"
             class="chart-container"
           >
             <line-chart
@@ -99,7 +100,8 @@
           </v-col>
           <v-col
             v-if="view.graph2"
-            :cols="view.graph1 && view.graph2 ? 6 : 12"
+            cols="12"
+            :sm="view.graph1 && view.graph2 ? 6 : 12"
             class="chart-container"
           >
             <line-chart
