@@ -71,8 +71,9 @@ class ServerStore implements IServerStore {
                         ]
                     )
             )
+            console.log('[STORE]:\treaded from "serverStore.json" ');
         } catch (err) {
-            console.log('[STORE]:\tot readed from "serverStore.json" ');
+            console.log('[STORE]:\tnot readed from "serverStore.json" ');
 
         }
     }
@@ -133,7 +134,7 @@ function exitHandler(
         exit?: boolean
     },
     exitCode: number
-):void {
+): void {
     if (options.cleanup) console.log('clean')
     if (exitCode || exitCode === 0) console.log("code: ", exitCode);
     if (options.exit) process.exit()

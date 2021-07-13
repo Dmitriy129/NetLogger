@@ -78,4 +78,5 @@ export class NMManager implements INMManager {
 
 
 const nmmanager = new NMManager()
+nmmanager.initFromStore()
 export default nmmanager
